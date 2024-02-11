@@ -18,6 +18,7 @@ import repository.DataBaseBroker;
  * @author Ljubomir
  */
 public class ServerThread extends Thread {
+    int nest;
     ArrayList<CommonSkocko> igra;
     ObjectInputStream in;
     ObjectOutputStream out;
