@@ -5,6 +5,7 @@
 package commonskocko;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -22,7 +23,7 @@ public class CommonSkocko implements Serializable {
     int pogodjeniNisuNaMestu;
     int[] niz;
     boolean poslednja = false;
-    String kombinacija;
+   
 
     public void setPoslednja(boolean poslednja) {
         this.poslednja = poslednja;
@@ -58,14 +59,24 @@ public class CommonSkocko implements Serializable {
     }
 
     public int getPogodjeniNisuNaMestu(CommonSkocko cm) {
-        for (int i = 0; i < 4; i++) {
-            if (niz[i] == cm.prvi || niz[i] == cm.drugi || niz[i] == cm.treci || niz[i] == cm.cetvrti) {
+    pogodjeniNisuNaMestu = 0; // Initialize the counter
+    
+    boolean[] counted = new boolean[4];
+    
+    for (int i = 0; i < 4; i++) {
+        if ((niz[i] == cm.prvi && i != 0) ||
+            (niz[i] == cm.drugi && i != 1) ||
+            (niz[i] == cm.treci && i != 2) ||
+            (niz[i] == cm.cetvrti && i != 3)) {
+            if (!counted[niz[i]]) {
                 pogodjeniNisuNaMestu++;
+                counted[niz[i]] = true;
             }
         }
-
-        return pogodjeniNisuNaMestu;
     }
+
+    return pogodjeniNisuNaMestu;
+}
 
     public void setDate(Date date) {
         this.date = date;
