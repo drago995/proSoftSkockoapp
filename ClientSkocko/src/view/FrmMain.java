@@ -307,13 +307,14 @@ public class FrmMain extends javax.swing.JFrame {
             igra.add(skocko);
             updateTable();
         } catch (Exception e) {
+            System.out.println("Nije dobio skocka od servera");
         }
         
-        if(skocko.pobedioJe()){
+        if(skocko != null && skocko.pobedioJe()){
             JOptionPane.showMessageDialog(this, "Kombinacija je tacna, pobedili ste !!!");
         
         }
-        if(skocko.isPoslednja()){
+        if(skocko != null && skocko.isPoslednja()){
             JOptionPane.showMessageDialog(this, "Niste pogodili tacnu kombinaciju za 6 rundi, izgubili ste !");
             
         }
